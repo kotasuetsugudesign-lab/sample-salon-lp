@@ -5,66 +5,152 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* ---- Base ---- */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    color: #333;
-    line-height: 1.7;
-    background-color: #fff;
-    overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+  background-color: #fff;
+  overflow-x: hidden;
 }
 
 /* ---- Base elements ---- */
 img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: bottom;
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
 button {
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    background: none;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
+
 /* ---- リセットCSS ここまで ---- */
+
+body {
+  padding-top: 72px;
+  /* ---- ヘッダーの高さ分---- */
+}
+
+/* ---- header ここから ---- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+}
+
+
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.header-btn {
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid #333;
+  color: #fff;
+  background: #333;
+  transition: 0.3s;
+}
+
+.header-btn:hover {
+  opacity: 0.8;
+}
+
+.header.is-scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header.is-scrolled .header-logo {
+  color: #333;
+}
+
+.header.is-scrolled .header-btn {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* ---- header ここまで ---- */
 
 /* ---- section FV ここから ---- */
 .fv {
-  min-height: 100vh;     /*画面の高さ100%(スマホでもPCでも*/
+  position: relative;
+  min-height: 100vh;
+  /*画面の高さ100%(スマホでもPCでも*/
   display: flex;
-  align-items: center;   /*縦方向の中央寄せ*/
-  background-color: aqua;
-  background-image: url("img/fv.jpg"); /* 仮 */
-  background-size: cover; /*画像を要素いっぱいに表示*/
-  background-position: center;   /*画像の中心を基準に表示*/
+  align-items: center;
+  /*縦方向の中央寄せ*/
+  background-image: url("img/fv.jpg");
+  background-size: cover;
+  /*画像を要素いっぱいに表示*/
+  background-position: center;
+  /*画像の中心を基準に表示*/
+}
+
+.fv::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* ←ここが肝 */
 }
 
 .fv-inner {
-  max-width: 800px;   /*横に広がりすぎ注意*/
-  margin: 0 auto;     /*横に中央よせ*/
-  padding: 0 24px;   /*スマホでは端にくっつかないように余白*/
-  text-align: center;   /*文字を中央よせ*/
+  max-width: 800px;
+  /*横に広がりすぎ注意*/
+  margin: 0 auto;
+  /*横に中央よせ*/
+  padding: 0 24px;
+  /*スマホでは端にくっつかないように余白*/
+  text-align: center;
+  /*文字を中央よせ*/
+  position: relative;
+  z-index: 1;
+  color: #fff;
 }
 
 .fv h1 {
-  font-size: 40px;
+  font-size: clamp(28px, 4vw, 40px);
   line-height: 1.4;
   margin-bottom: 24px;
 }
@@ -72,7 +158,7 @@ button {
 .fv-lead {
   font-size: 16px;
   line-height: 1.8;
-  color: #555;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 40px;
 }
 
@@ -84,48 +170,116 @@ button {
   border-radius: 999px;
   font-size: 14px;
   transition: 0.3s;
+  min-height: 48px;
 }
 
-fv-btn:hover {
+.fv-btn:hover {
   opacity: 0.8;
 }
+
 /* ---- section FV ここまで---- */
 
 /* ---- section Reason ここから---- */
 .reason {
-  padding: 80px 0;
-  background-color: blanchedalmond;
+  padding: 120px 0;
+  background: linear-gradient(180deg,
+      #ffffff 0%,
+      #faf7f3 100%);
+}
+
+.reason-list {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.reason-card {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 16px;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.reason-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.reason-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.reason-card-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.8;
 }
 
 .reason-inner {
-  max-width: 1000px; /*任意の幅に調整*/
-  margin: 0 auto;   /*中央寄せ*/
-  padding: 0 24px;   /*左右の余白*/
-  text-align: center;  /*中央よせ*/
+  max-width: 1000px;
+  /*任意の幅に調整*/
+  margin: 0 auto;
+  /*中央寄せ*/
+  padding: 0 24px;
+  /*左右の余白*/
+  text-align: center;
+  /*中央よせ*/
 }
 
 .reason-title {
   font-size: 28px;
-  margin-bottom: 16px; /*タイトルとリードの間隔*/
+  margin-bottom: 16px;
+  /*タイトルとリードの間隔*/
 }
 
 .reason-lead {
   font-size: 16px;
   color: #666;
 }
+
+.reason img {
+  margin-top: 32px;
+  border-radius: 12px;
+}
+
 /* ---- section Reason ここまで---- */
 
 /* ---- price ここから---- */
 .price {
-  padding: 80px 0;
-  background-color: #fff;
+  padding: 120px 0;
+  background: linear-gradient(180deg,
+      #faf7f3 0%,
+      #f3f3f3 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .price-inner {
   max-width: 1000px;
-  margin: 0 auto;  /*中央よせ*/
-  padding: 0 24px; /*左右の余白*/
-  text-align: center;  /*中央よせ*/
+  margin: 0 auto;
+  /*中央よせ*/
+  padding: 0 24px;
+  /*左右の余白*/
+  text-align: center;
+  /*中央よせ*/
 }
 
 .price-title {
@@ -135,55 +289,153 @@ fv-btn:hover {
 
 .price-list {
   display: flex;
-  gap: 32px;               /*カード同士の隙間*/
-  justify-content: center;  /*全体を中央よせ*/
-  margin-top: 40px;        /*上のセクションとの余白*/
+  gap: 32px;
+  /*カード同士の隙間*/
+  justify-content: center;
+  /*全体を中央よせ*/
+  margin-top: 40px;
+  /*上のセクションとの余白*/
 }
 
 .price-card {
+  position: relative;
   background: #fafafa;
-  padding: 32px;        /*中の文字と縁の余白*/
-  border-radius: 12px;     /*角を丸く*/
-  width: 280px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05); /*軽い影*/
-  transition: transform 0.3s, box-shadow 0.3s; /*動きをなめらかにする準備*/
+  border-radius: 12px;
+  /*角を丸く*/
+  width: 100%;
+  max-width: 320px;
+  padding: 28px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  /*軽い影*/
+  transition: transform 0.3s, box-shadow 0.3s;
+  /*動きをなめらかにする準備*/
 }
 
- 
+
 
 .price-card:hover {
-  transform: translateY(-4px); /*少し上に移動*/
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08); /*影を強調*/
-} 
+  transform: translateY(-4px);
+  /*少し上に移動*/
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  /*影を強調*/
+}
+
+.price-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.price-card.is-recommended {
+  border: 2px solid #666;
+}
+
+.price-card.is-recommended:hover {
+  transform: scale(1.03) translateY(-4px);
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
 
 .price-card h3 {
   font-size: 18px;
-  margin-bottom: 8px;  /*下に少し余白　timeとつまらないように*/
+  margin-bottom: 8px;
+  /*下に少し余白　timeとつまらないように*/
 }
 
 .price-time {
   font-size: 14px;
   color: #777;
-  margin-bottom: 16px;  /*次に来る金額と距離を取るため*/
+  margin-bottom: 16px;
+  /*次に来る金額と距離を取るため*/
 }
 
-.price-amount {  /*金額*/
+.price-amount {
+  /*金額*/
   font-size: 22px;
   font-weight: bold;
 }
+
 /* ---- price ここまで---- */
+
+/* ---- CTA ここから ---- */
+.cta {
+  padding: 120px 0;
+  background: linear-gradient(180deg,
+      #f8f8f8 0%,
+      #ffffff 100%);
+}
+
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 28px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.cta-text {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: #333;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  min-height: 48px;
+}
+
+.cta-btn:hover {
+  opacity: 0.8;
+}
+
+.cta-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---- CTA ここまで ---- */
+
 
 /* ---- フッターここから---- */
 .footer {
-  padding: 40px 0;  /*上下に余白を作って終わり感だす*/
+  padding: 40px 0;
+  /*上下に余白を作って終わり感だす*/
   background-color: #f5f5f5;
-  text-align: center;  /*LPではフッターは中央よせ*/
+  text-align: center;
+  /*LPではフッターは中央よせ*/
 }
 
 .footer-text {
   font-size: 12px;
   color: #777;
 }
+
 /* ---- フッターここまで---- */
 
 /* ---- スマホ対応 ここから---- */
@@ -205,18 +457,34 @@ fv-btn:hover {
     padding: 60px 0;
   }
 
+  h2 {
+    line-height: 1.4;
+  }
+
+  .reason-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .reason-title {
     font-size: 22px;
   }
 
-   .price-title {
+  .price-title {
     font-size: 22px;
   }
 
   .price-list {
     flex-direction: column;
-    gap: 24px;
-}
+    align-items: center;
+  }
+
+  .cta-btn {
+    font-size: 15px;
+    letter-spacing: 0.05em;
+  }
 
 }
+
+/* ---- スマホ対応 ここまで---- */
 /* ---- スマホ対応 ここまで---- */
