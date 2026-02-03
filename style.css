@@ -1,0 +1,222 @@
+/* ---- リセットCSS ここから ---- */
+
+/* =========================================Reset + Base CSS========================================= */
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- Base ---- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.7;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+/* ---- Base elements ---- */
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+/* ---- リセットCSS ここまで ---- */
+
+/* ---- section FV ここから ---- */
+.fv {
+  min-height: 100vh;     /*画面の高さ100%(スマホでもPCでも*/
+  display: flex;
+  align-items: center;   /*縦方向の中央寄せ*/
+  background-color: aqua;
+  background-image: url("img/fv.jpg"); /* 仮 */
+  background-size: cover; /*画像を要素いっぱいに表示*/
+  background-position: center;   /*画像の中心を基準に表示*/
+}
+
+.fv-inner {
+  max-width: 800px;   /*横に広がりすぎ注意*/
+  margin: 0 auto;     /*横に中央よせ*/
+  padding: 0 24px;   /*スマホでは端にくっつかないように余白*/
+  text-align: center;   /*文字を中央よせ*/
+}
+
+.fv h1 {
+  font-size: 40px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.fv-lead {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.fv-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+fv-btn:hover {
+  opacity: 0.8;
+}
+/* ---- section FV ここまで---- */
+
+/* ---- section Reason ここから---- */
+.reason {
+  padding: 80px 0;
+  background-color: blanchedalmond;
+}
+
+.reason-inner {
+  max-width: 1000px; /*任意の幅に調整*/
+  margin: 0 auto;   /*中央寄せ*/
+  padding: 0 24px;   /*左右の余白*/
+  text-align: center;  /*中央よせ*/
+}
+
+.reason-title {
+  font-size: 28px;
+  margin-bottom: 16px; /*タイトルとリードの間隔*/
+}
+
+.reason-lead {
+  font-size: 16px;
+  color: #666;
+}
+/* ---- section Reason ここまで---- */
+
+/* ---- price ここから---- */
+.price {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.price-inner {
+  max-width: 1000px;
+  margin: 0 auto;  /*中央よせ*/
+  padding: 0 24px; /*左右の余白*/
+  text-align: center;  /*中央よせ*/
+}
+
+.price-title {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.price-list {
+  display: flex;
+  gap: 32px;               /*カード同士の隙間*/
+  justify-content: center;  /*全体を中央よせ*/
+  margin-top: 40px;        /*上のセクションとの余白*/
+}
+
+.price-card {
+  background: #fafafa;
+  padding: 32px;        /*中の文字と縁の余白*/
+  border-radius: 12px;     /*角を丸く*/
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05); /*軽い影*/
+  transition: transform 0.3s, box-shadow 0.3s; /*動きをなめらかにする準備*/
+}
+
+ 
+
+.price-card:hover {
+  transform: translateY(-4px); /*少し上に移動*/
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08); /*影を強調*/
+} 
+
+.price-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;  /*下に少し余白　timeとつまらないように*/
+}
+
+.price-time {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 16px;  /*次に来る金額と距離を取るため*/
+}
+
+.price-amount {  /*金額*/
+  font-size: 22px;
+  font-weight: bold;
+}
+/* ---- price ここまで---- */
+
+/* ---- フッターここから---- */
+.footer {
+  padding: 40px 0;  /*上下に余白を作って終わり感だす*/
+  background-color: #f5f5f5;
+  text-align: center;  /*LPではフッターは中央よせ*/
+}
+
+.footer-text {
+  font-size: 12px;
+  color: #777;
+}
+/* ---- フッターここまで---- */
+
+/* ---- スマホ対応 ここから---- */
+@media (max-width: 768px) {
+  .fv h1 {
+    font-size: 28px;
+  }
+
+  .fv-lead {
+    font-size: 14px;
+  }
+
+  .fv-btn {
+    padding: 12px 28px;
+    font-size: 13px;
+  }
+
+  .reason {
+    padding: 60px 0;
+  }
+
+  .reason-title {
+    font-size: 22px;
+  }
+
+   .price-title {
+    font-size: 22px;
+  }
+
+  .price-list {
+    flex-direction: column;
+    gap: 24px;
+}
+
+}
+/* ---- スマホ対応 ここまで---- */
